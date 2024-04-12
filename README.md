@@ -30,8 +30,6 @@ under activity_main.xml. Id:et skapas med hjälp av 'android:id="@+id/my_webview
       />
 ```
 
-Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
-![](android2.png)
-![](android3.png)
+![](external.png)
+![](internal.png)
