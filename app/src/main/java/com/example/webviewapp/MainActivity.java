@@ -15,11 +15,11 @@ public class MainActivity extends AppCompatActivity {
     private WebView myWebView;
 
     public void showExternalWebPage(){
-        myWebView.loadUrl("https://www.his.se/");
+        myWebView.loadUrl("https://wwwlab.webug.se/xmlapi/a23raslj/Call%20Web%20Service%20with%20PHP/Frontpage.php");
     }
 
     public void showInternalWebPage(){
-        myWebView.loadUrl("https://www.his.se/");
+        myWebView.loadUrl("https://wwwlab.webug.se/xmlapi/a23raslj/Call%20Web%20Service%20with%20PHP/Response.php?picked_choice=Ukraine");
     }
 
     @Override
