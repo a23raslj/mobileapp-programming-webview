@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showInternalWebPage(){
-        myWebView.loadUrl("https://wwwlab.webug.se/xmlapi/a23raslj/Call%20Web%20Service%20with%20PHP/Response.php?picked_choice=Ukraine");
+        myWebView.loadUrl ("file:///android_asset/html/Welcome.html");
     }
 
     @Override
