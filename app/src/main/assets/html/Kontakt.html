@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8">
+    <title>Kontakta oss</title>
+    <link href="Stylesheet.css" rel="Stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+  <body>
+    <div id="Forever">
+      <a href="Welcome.html">Forever PM</a>
+    </div>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="Welcome.html">Start</a></li>
+          <li><a href="Omoss.html">Om oss</a></li>
+          <li><a href="Produkter.html">Produkter & tjänster</a></li>
+          <li><a href="Portfolio.html">Portfolio</a></li>
+          <li><a href="Kontakt.html">Kontakta oss</a></li>
+        </ul>
+      </nav>
+    </header> 
+    <main>
+      <section>
+        <h1>Kontakta oss</h1>
+        <form method="post" action="https://wwwlab.webug.se/examples/webbplatsdesign/recieve/recieve.php">
+          <div id="info1">
+            <label for="fnamn">Förnamn:</label>
+            <input type="text" id="fnamn" placeholder="Ditt förnamn" name="firstname">
+            <label for="enamn">Efternamn:</label>
+            <input type="text" id="enamn" placeholder="Ditt efternamn" name="lastname">
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="Din emailadress" name="mail">
+          </div>
+          <div id="info2">
+            Vad gäller ditt ärende?
+            <label for="kund">Kund</label>
+            <input type="radio" id="kund" name="ärende" value="kund">
+            <label for="arbete">Arbetssökande</label>
+            <input type="radio" id="arbete" name="ärende" value="arbete">
+            <label for="supp">Söker support</label>
+            <input type="radio" id="supp" name="ärende" value="support">
+          </div>
+          <div id="info3">
+            <label for="ärende">Beskriv ditt ärende</label>
+            <textarea id="ärende" name="beskrivning" placeholder="Beskriv ditt ärende här" rows="10"></textarea>
+          </div>
+          <div id="info4">
+            Godkänner du behandling av dina personuppgifter
+            <label for="godkänner">Ja</label>
+            <input type="checkbox" id="godkänner" name="Godkänt" value="Ja">
+            Vill du prenumerera på nyhetsbrev?
+            <label for="nyheter">Ja</label>
+            <input type="checkbox" id="nyheter" name="brev" value="Ja">
+          </div>
+          <div>
+            <input type="submit">
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <div class="contact">
+        <h2 class="ftitle">Kontakt Information</h2>
+        <span class="material-symbols-outlined">
+          apartment
+        </span>
+        <span>Påhittadvägen 7, 123 45 Sverige</span>
+        <span class="material-symbols-outlined">
+          mail
+        </span>
+        <span>Ocksåpåhittad@finnsej.se</span>
+        <span class="material-symbols-outlined">
+          call
+        </span>
+        <span>1234-567890</span>
+        <span class="material-symbols-outlined">
+          <a href="Kontakt.html">contact_support</a>
+        </span>
+      </div>
+      <div>
+        <h2 class="ftitle">Få våra nyhetsbrev</h2>
+        <form method="post" action="https://wwwlab.webug.se/examples/webbplatsdesign/recieve/recieve.php">
+          <label for="news">Email:</label>
+          <input type="text" name="email" id="news">
+          <input type="submit" value="subscribe">
+        </form>
+      </div>
+    </footer>   
+  </body>
+</html>  

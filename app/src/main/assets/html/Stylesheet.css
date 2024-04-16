@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Playball&family=Roboto:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Macondo&family=Playball&family=Roboto:wght@100;300;400&display=swap');
+
+/* General */
+body {
+    background: #483C32;
+    color: white;
+    font-size: 1.2em;
+    font-family: 'Macondo', cursive;
+}
+
+a {
+    color: white;
+    transition: 1.5s;
+}
+
+a:hover {
+    color: orange;
+}
+
+h1 {
+    background-color: #910C06;
+    color: white;
+    padding: 10px;
+}
+
+h2 {
+    background-color: #F46543;
+    color: white;
+    padding: 10px;
+}
+
+figcaption {
+    font-size: 0.8em;
+}
+
+/* Logga */
+#forever {
+    font-family: 'Playball', cursive;
+    font-size: 3rem;
+    background-color: #910C06;
+    display: inline;
+    border-radius: 20px;
+}
+
+#forever a{
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: center;
+    background-color: #910C06;
+    margin-top: 2em;
+    padding: 20px;
+}
+
+header li{
+    list-style: none;
+    display: inline;
+    background-color: #F46543;
+    padding: 12px;
+    box-shadow: 3px 3px 5px black;
+    transition: 0.5s;
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+header li:hover{
+    box-shadow: 3px 3px 5px orange;
+    position: relative;
+    bottom: 3px;
+}
+
+/* Footer */
+.contact {
+    display: flex;
+    flex-direction: column;
+    margin-right: 2em;
+}
+
+.ftitle {
+    background: transparent;
+}
+
+footer {
+    background-color: grey;
+    display: flex;
+    padding: 5px;
+    margin-top: 25px;
+}
+
+/* Portfolio sidan */
+#Showcase {
+    display: flex;
+    justify-content: center;
+}
+
+.portfolio {
+    width: 40%;
+    height: 325px;
+    border: solid black 2px;
+    border-radius: 30px;
+    margin: auto;
+    padding: 30px;
+    background-color: #706a64;
+    box-shadow: 2px 2px 4px black;
+    overflow: auto;
+    display: flex;
+}
+
+.portfolio h3{
+    position: relative;
+    bottom: 40px;
+    left: 125px;
+}
+
+.portfolio figcaption{
+    background-color: #910C06; 
+    position: relative;
+    bottom: 1.0em;
+    display: inline-block;
+}
+
+.Showcase2 {
+    border: solid black 2px;
+    margin: auto;
+    margin-top: 3em;
+    max-width: 50%;
+    padding: 2em;
+    background-color: #706a64;
+    box-shadow: 2px 2px 4px black;
+}
+
+.Showcase2 tr:hover{
+    box-shadow: inset 0px 0px 6px orange ;
+}
+
+.Showcase2 li:hover{
+    box-shadow: inset 0px 0px 6px orange ;
+}
+
+#Showcase3 {
+    display: flex;
+    margin-bottom: 3em;
+}
+
+#intervjutitel {
+    position: absolute;
+    width: 100%;
+}
+
+.Intervju {
+    margin: auto;
+    margin-top: 5em;
+}
+
+.Intervju img{
+    border: solid black 2px;
+    border-radius: 50%;
+    height: 400px;
+    width: 400px;
+    overflow: hidden;
+    box-shadow: 3px 3px 3px black;
+}
+
+.Intervju p{
+    background-color: #F46543;
+    padding: 25px;
+    border-radius: 50px 50px 50px 0px;
+    width: 140px;
+    position: relative;
+    left: 80%;
+    margin-bottom: -70px;
+}
+
+.Intervju figcaption{
+    position: relative;
+    width: 300px;
+    left: 10%;
+    margin-top: 10px;
+}
+
+.more {
+    font-size: 1.2em;
+    
+}
+
+#tillbaka a{
+    background-color: #FD8945;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    transition: 0.8s;
+}
+
+#tillbaka :hover{
+    position: relative;
+    bottom: 3px;
+    box-shadow: 3px 3px 3px orange;
+}
+
+/* Om oss sidan */
+#om {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.history {
+   border: solid black 2px;
+   max-width: 50%;
+   margin-bottom: 50px;
+   padding: 15px;
+   border-radius: 15px;
+   background-color: #706a64;
+   box-shadow: 3px 3px 3px black;
+}
+
+#personal {
+    display: flex;
+    justify-content: center;
+}
+
+.Portrait {
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    border: solid black 2px;
+    box-shadow: 2px 2px 2px black;
+    margin-bottom: 15px;
+    margin-top: -55px;
+}
+
+/* Kontakta oss Sidan */
+#kontakt{
+    display: flex;
+    flex-direction: column;
+}
+
+#info1 {
+    display: flex;
+    flex-direction: column;
+    max-width: 20%;
+    gap: 5px;
+}
+
+#info2 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+#info3 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+    max-width: 500px;
+}
+
+#info4 {
+    margin-bottom: 5px;
+}
+
+/* Produkt Sidan */
+#sell {
+    display: flex;
+    overflow: auto;
+}
+
+.Produkt {
+    border: outset black;
+    margin: 5px 10px 25px 10px;
+    box-shadow: 2px 2px 3px black;
+    min-width: 350px;
+    max-height: 450px;
+    padding: 15px;
+    transition: ease-out 1s;
+}
+
+.Produkt img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.Produkt:hover{
+    box-shadow: 3px 3px 3px orange;
+    position: relative;
+    bottom: 15px;
+}
+
+.Produkt figcaption{
+    margin-bottom: 25px;
+    border-radius: 15px;
+    padding: 7px;
+}
+
+#cart {
+    font-size: 3em;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+#rea {
+    text-decoration: line-through;
+}
+
+#titletjanst {
+    margin-top: 100px;
+}
+
+#service {
+    display: flex;
+}
+
+.servicediv {
+    border: groove black 2px;
+    margin: 20px 0px 50px 15px;
+    padding: 25px;
+    border-radius: 10%;
+    box-shadow: 2px 2px 2px black;
+    transition: 1.5s;
+}
+
+.servicediv:hover{
+    box-shadow: 0px 0px 5px orange;
+}
+
+.servicediv h3{
+    background-color: #910C06;
+}
+
+.servicediv img{
+    height: 300px;
+    width: 370px;
+    border: solid #910C06 3px;
+}
+
+.spaninfo {
+    display: block;
+    background-color: #910C06;
+    padding: 15px;
+    border-radius: 25px;
+}
+
+.selltag {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: yellow;
+    font-size: 1.5em;
+}
+
+#sflink {
+    text-decoration: none;
+}
+
+/* Välkommen Sidan */
+#mainmenu {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+#dicemain {
+    height: 400px;
+    border-radius: 20px;
+}
