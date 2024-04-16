@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>A SPA Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        /* ----- Javascript for SPA - Single Page Application logic ----- */
+        // Help function that shows page with id page+p and hides all other pages
+        function showPage(p) {
+            // Step 1 - Hide all pages
+            pageArr = document.getElementsByClassName("page");
+            for (let i = 0; i < pageArr.length; i++) {
+                let page = pageArr[i];
+                page.style.display = "none";
+            }
+            // Step 2 - Show the selected page
+            document.getElementById("page" + p).style.display = "grid";
+ 
+            // Step 3 - Make all navbar buttons inactive 
+            let btnArr = document.getElementsByClassName("navbar__btn");
+            for (let i = 0; i < btnArr.length; i++) {
+                let btn = btnArr[i];
+                btn.classList.remove("navbar__btn--active");
+            }
+ 
+            // Step 4 - Make page all navbar buttons with class nav+p active
+            btnArr = document.getElementsByClassName("nav" + p);
+            for (let i = 0; i < btnArr.length; i++) {
+                let btn = btnArr[i];
+                btn.classList.add("navbar__btn--active");
+            }
+        }
+        /* -----  ----- */
+ 
+        // Init function. Here we can put code that is needed to initialize our prototype.
+        function initPrototype() {
+            // For example, when using sound or sensors this becomes important.
+            console.log("==> Prototype init started.");
+ 
+            // Show the landingpage/startpage
+            showPage(1);
+        }
+    </script>
+    <style>
+        /* 
+            CSS can and should be changed to fit your design profile.
+        */
+        .prototype-start-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(50, 50, 50, 0.5);
+            z-index: 1000;
+        }
+
+        .page {
+            display:grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 100px, auto;
+            grid-template-areas: 
+            "miljo miljo miljo miljo miljo miljo"
+            "miljo miljo miljo miljo miljo miljo"
+            "banner banner banner banner banner banner"
+            ". navbar navbar navbar navbar ."
+        }
+
+        /* Miljöbilden */
+        #miljo {
+            display: grid;
+            grid-area: miljo;
+        }
+        /*
+        #miljo img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        } */
+
+        #banner {
+            grid-area: banner;
+        }
+ 
+        .navbar {
+            padding: 10px;
+            background-color: #673AB7; 
+            border-radius: 0px 0px 10px 10px;
+            grid-area: navbar;
+        }
+
+        #om {
+            grid-area: om;
+        }
+
+        #dikt {
+            grid-area: dikt;
+        }
+ 
+        .navbar__btn {
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            border: 0;
+            margin: 2px;
+            padding: 8px 5px;
+            cursor: default;
+            font-weight: 400;
+        }
+ 
+        .navbar__btn:hover {
+            text-decoration-line: underline;
+            text-decoration-style: solid;
+            text-decoration-color: #fff;
+            text-decoration-thickness: 5px;
+        }
+ 
+        .navbar__btn--primary {
+            background-color: white;
+            color: #212121;
+        }
+ 
+        .navbar__btn--active {
+            background-color: #03A9F4 !important;
+            color: white;
+        }
+
+        h1 {
+            background-color: #512DA8;
+            color: white;
+            padding: 20px;
+            margin-bottom: 0px;
+            margin-top: 0px;
+        }
+
+    </style>
+</head>
+ 
+<body onload="showPage(0);">
+    <!-- Page0 is needed for initPrototype() function. DON'T REMOVE! -->
+    <!-- Page0 is needed for initPrototype() function. DON'T REMOVE! -->
+    <div id="page0" class="page">
+        <div class="prototype-start-page">
+            <button class="navbar__btn navbar__btn--primary" type="button" onclick="initPrototype();">Start prototype</button>
+        </div>
+    </div>
+    <!-- Page0 is needed for initPrototype() function. DON'T REMOVE! -->
+    <!-- Page0 is needed for initPrototype() function. DON'T REMOVE! -->
+ 
+    <!-- alla sidor -->
+    <!-- Nya sidor måste ha klassen 'page' och ett id 'pageX', där X måste vara ett unikt sidnummer i html-dokumentet, 
+         och ha HTML-strukturen:
+ 
+        <div id="pageX" class="page">
+            Nya sidans HTML-innehåll. Glöm inte att ta med menyn.
+        </div>
+ 
+        I detta exempel har vi tre sidor för app-prototypen, page1, page2 och page3, så en naturlig nästa sida vore page4:
+ 
+        <div id="page4" class="page">
+            Nya sidans HTML-innehåll. Glöm inte att ta med menyn och lägga till ett 4e menyalternativ hos menyerna på samtliga sidor.
+        </div>
+ 
+        För att javascriptet som sköter sidnavigeringen skall fungera krävas att meny-knapparna har klasserna 
+        'navbar__btn' och 'navX', där X är nummret för sidan som meny-knappen öppnar. Vi måste också ange nummret 
+        på sidan som skall öppnas av meny-knappen genom att använda '4' som parameter till funktionen 'showPage();'
+ 
+        T ex, för att lägga till en meny-knapp för 'page4' så skulle vi skapa följande knapp:
+        <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Go to page 4</button>
+ 
+        Klassen navbar__btn--active innehåller stylingen för det menyalternativ som är aktivt.
+    -->
+    <div id="page1" class="page">
+        <h1 id="banner">Boyeappen</h1>
+        <!-- navbar -->
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+        <!-- page content -->
+        <div id="om">
+          <figure id="portratt">
+              <img src="Karin_Boye,_1940s.gif">
+          </figure>
+          <h2>Karin Boye</h2>
+          <p>
+              Karin Boye avlade studentexamen vid Åhlinska skolan i Stockholm 1920, och folkskollärarexamen 1921. 
+              Därefter begav hon sig till Uppsala för att studera grekiska, nordiska språk och litteraturhistoria. 
+              På ett kristet sommarläger i Fogelstad hade hon 1918 träffat Anita Nathorst, som hon kom att återse i Uppsala. 
+              Den sju år äldre Nathorst hade studerat teologi och humaniora vid Uppsala universitet. 
+              Under sitt sista år på universitetet gick Boye med i Clarté Hon tog en filosofisk ämbetsexamen vid Stockholms högskola 1928; 
+              allvarlig överansträngning och stress hade då tvingat henne att lämna Uppsala men den närmare bakgrunden är oklar. 
+              Därutöver var hon ordförande i Kvinnliga studentföreningen och skrev i studenttidningen Ergo.
+            </p>
+            <p>Författarskap</p>
+            <p>
+              1922 debuterade hon med diktsamlingen Moln som förmedlade en ung människas grubbel över Gud, livets brister och sin egen framtid. 
+              Men där fanns också hennes speciella särdrag och motivkretsar. Formellt märks de lättflytande rimmen och tendensen till bokstavsrim 
+              (som skulle förstärkas när hon fick läsa Eddans dikter på isländska i Uppsala). 
+              Men framför allt är den speciella rytmen slående, där till exempel betonade stavelser avlöser varandra. 
+              I de följande diktsamlingarna Gömda land 1924 och Härdarna 1927 manar hon, med grund i kristna motiv, till tapperhet, strid och offer. 
+              1925 höll hon sitt berömda Tal till mannen vid studentkårens vårfest. Den första romanen, Astarte, fick pris i en nordisk romanpristävling 1931.
+            </p>
+            <p>
+              1927 blev Karin Boye medlem av den socialistiska tidskriften Clartés redaktion. 
+              Hon var också med och grundade tidskriften Spektrum och ingick i dess redaktion 1931-1932 tillsammans med Josef Riwkin, 
+              Erik Mesterton och Gunnar Ekelöf. I Spektrum publicerades Boyes essä "Språket bortom logiken" 
+              där hon på psykoanalytisk grund pläderade för ett nytt poetiskt symbolspråk. 
+              Hon kom också att bidra med en del av kapitalet för detta initiativ 
+              (hennes far hade avlidit 1927 och de ärvda pengarna från honom gjorde henne ekonomiskt oberoende under några år).
+            </p>
+            <p>1931 blev hon invald i Samfundet De Nio.</p>
+            <p>Uppgörelse med sig själv<br>
+               Under en vistelse i Berlin 1932–1933 tog hon steget till att leva med sin homosexualitet, på ett tydligare sätt än tidigare.
+               Hennes äktenskap med Leif Björk upplöstes under Berlinåret, och när hon återvände till Sverige var hon, som vännerna upplevde det, 
+               förändrad: mer elegant, mindre intresserad av den aktivt marxistiska sidan i Clarté och kanske mera sårbar än tidigare. 
+               Efter en tid bjöd hon in en ung tysk-judisk kvinna, Margot Hanel, som hon mött och "förfört" (hennes eget uttryck) i Berlin, 
+               och de kom sedan att leva tillsammans i princip fram till Boyes död – detta vid en tid då homosexualitet fortfarande var ett brott i Sverige. 
+               Boyes djupa kärlek till Anita Nathorst blev dock aldrig besvarad.
+            </p>
+            <p>
+                    Boye hade förmodligen varit medveten om en lesbisk eller bisexuell sida hos sig själv sedan tiden för debutboken, 
+                    men det var en dragning hon hade svårt att praktiskt acceptera därför att den tycktes kräva av henne att hon skulle leva som en man; 
+                    och dessutom var det svårt att tala öppet om saken. Margit Abenius, som kände Boye från studentåren och framåt och starkt kom att
+                    påverka bilden av henne, spårar det här problemet från hennes tonårsdikter och framåt. Redan i de dikter och legender hon skrev i tonåren 
+                    identifierar sig Boye mycket ofta med manliga hjältar, och deras offerhandlingar kan ofta ses som erotiskt laddade.
+            </p>
+            <p>
+                    Abenius menar att kampen mellan att vara trogen sina egna val, även de omedvetna valen, 
+                    och sin egen övertygelse – "att leva rak" med Boyes egna ord – och de yttre moraliska krav som vi 
+                    gärna vill ta på oss (överjaget hos Freud) – en viktig konfliktlinje från debutboken och framåt – har en 
+                    del att göra med Boyes insikt om sin förbjudna lust. Boye gör själv en liknande tolkning i Kris, men eftersom 
+                    den är skriven just efter Berlinåret kan man inte utan vidare se romanen som facit till den kris Boye genomgick 
+                    i början av 1921 (och som hon själv gjorde en första analys av i ett brev till väninnan Agnes Fellenius). 
+                    Under tiden i Berlin genomgick hon också viss psykoanalytisk behandling, och kunde bevittna nazismens genombrott på nära håll.
+            </p>
+        </div>
+            <figure id="miljo">
+                <img src="hero_image_large.jpg">
+            </figure>
+            <div id="dikt">
+              <h2>Ja visst gör det ont</h2>
+              <p>
+                  Ja visst gör det ont när knoppar brister. <br>
+                  Varför skulle annars våren tveka? <br>
+                  Varför skulle all vår heta längtar <br>
+                  bindas i det frusna bitterbleka? <br>
+                  Höljet var ju knoppen hela vintern. <br>
+                  Vad är det för nytt, som tär och spränger? <br>
+                  Ja visst gör det ont när knoppar brister, <br>
+                  ont för det som växer <br>
+                  och det som stänger.
+              </p>
+              <p>
+                  Ja nog är det svårt när droppar faller. <br>
+                  Skälvande av ängslan tungt de hänger, <br>
+                  klamrar sig vid kvisten, sväller, glider - <br>
+                  tyngden drar dem neråt, hur de klänger. <br>
+                  Svårt att vara oviss, rädd och delad, <br>
+                  svårt att känna djupet dra och kalla, <br>
+                  ändå sitta kvar och bara darra - <br>
+                  svårt att vilja stanna <br>
+                  och vilja falla.
+              </p>
+              <p>
+                  Då, när det är värst och inget hjälper, <br>
+                  Brister som i jubel trädets knoppar. <br>
+                  Då, när ingen rädsla längre håller, <br>
+                  faller i ett glitter kvistens droppar <br>
+                  glömmer att de skrämdes av det nya <br>
+                  glömmer att de ängslades för färden - <br>
+                  känner en sekund sin största trygghet, <br>
+                  vilar i den tillit <br>
+                  som skapar världen. 
+              </p>
+            </div>
+    </div>
+ 
+    <div id="page2" class="page">
+        <!-- navbar -->
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary" type="button"onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+        <!-- page content -->
+        <h1>Example page 2</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium maxime expedita culpa? Nostrum
+            perspiciatis perferendis dolore atque fuga inventore blanditiis! Minus mollitia dolorum nesciunt in magni
+            necessitatibus minima porro officia.
+            Corrupti fuga maiores aut eligendi id quasi necessitatibus. A nihil, repellendus quia dolores magnam
+            temporibus cum molestiae debitis. Eveniet, dolor voluptates? Officiis rerum aliquid repellendus quia dolore
+            omnis optio cum.
+            Beatae illum est et sint hic magnam, dignissimos quos excepturi nihil harum minus deserunt odio deleniti
+            praesentium eum adipisci fuga sequi porro, dolore cupiditate eligendi rerum distinctio reiciendis?
+            Blanditiis, incidunt.</p>
+    </div>
+ 
+    <div id="page3" class="page">
+                <!-- navbar -->
+                <nav class="navbar">
+                    <button class="nav1 navbar__btn navbar__btn--primary" type="button" onclick="showPage(1);">Start</button>
+                    <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+                    <button class="nav3 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+                    <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+                    <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+                    <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+                    <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+                    <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+                    <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+                </nav>
+        <!-- page content -->
+        <h1>Example page 3</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae explicabo tempora ullam cumque, obcaecati
+            aut sed inventore excepturi, voluptatibus ratione laborum incidunt quod. Cum quis eos adipisci consequatur
+            ipsa. Sed!
+            Voluptatum voluptas sunt tenetur porro maiores veritatis, ipsam libero? Nesciunt ea quas iusto ducimus
+            suscipit eos quibusdam. Doloremque cum fugiat, tempora qui temporibus delectus. Fuga quaerat accusamus non
+            iusto delectus.
+            Esse a sit et nobis ducimus sint, porro, quod accusamus exercitationem voluptatum placeat sed. Soluta,
+            blanditiis aliquam consectetur rem aliquid itaque tempore ea corporis recusandae? Dignissimos sit expedita
+            commodi quibusdam.
+            Illo voluptates culpa assumenda recusandae explicabo ab pariatur? Temporibus qui dolorum expedita culpa
+            animi eligendi pariatur fuga dolorem ipsum, alias hic unde, nulla tenetur odio saepe enim aut ratione
+            laboriosam!</p>
+    </div>
+    <div id="page4" class="page">
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary" type="button" onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+         <!-- page content -->
+         <h1>Example page 4</h1>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae explicabo tempora ullam cumque, obcaecati
+             aut sed inventore excepturi, voluptatibus ratione laborum incidunt quod. Cum quis eos adipisci consequatur
+             ipsa. Sed!
+             Voluptatum voluptas sunt tenetur porro maiores veritatis, ipsam libero? Nesciunt ea quas iusto ducimus
+             suscipit eos quibusdam. Doloremque cum fugiat, tempora qui temporibus delectus. Fuga quaerat accusamus non
+             iusto delectus.
+             Esse a sit et nobis ducimus sint, porro, quod accusamus exercitationem voluptatum placeat sed. Soluta,
+             blanditiis aliquam consectetur rem aliquid itaque tempore ea corporis recusandae? Dignissimos sit expedita
+             commodi quibusdam.
+             Illo voluptates culpa assumenda recusandae explicabo ab pariatur? Temporibus qui dolorum expedita culpa
+             animi eligendi pariatur fuga dolorem ipsum, alias hic unde, nulla tenetur odio saepe enim aut ratione
+             laboriosam!</p>
+    </div>
+    <div id="page5" class="page">
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary" type="button" onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+         <!-- page content -->
+         <h1>Example page 5</h1>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae explicabo tempora ullam cumque, obcaecati
+             aut sed inventore excepturi, voluptatibus ratione laborum incidunt quod. Cum quis eos adipisci consequatur
+             ipsa. Sed!
+             Voluptatum voluptas sunt tenetur porro maiores veritatis, ipsam libero? Nesciunt ea quas iusto ducimus
+             suscipit eos quibusdam. Doloremque cum fugiat, tempora qui temporibus delectus. Fuga quaerat accusamus non
+             iusto delectus.
+             Esse a sit et nobis ducimus sint, porro, quod accusamus exercitationem voluptatum placeat sed. Soluta,
+             blanditiis aliquam consectetur rem aliquid itaque tempore ea corporis recusandae? Dignissimos sit expedita
+             commodi quibusdam.
+             Illo voluptates culpa assumenda recusandae explicabo ab pariatur? Temporibus qui dolorum expedita culpa
+             animi eligendi pariatur fuga dolorem ipsum, alias hic unde, nulla tenetur odio saepe enim aut ratione
+             laboriosam!</p>
+    </div>
+    <div id="page6" class="page">
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+         <!-- page content -->
+         <h1>Example page 6</h1>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae explicabo tempora ullam cumque, obcaecati
+             aut sed inventore excepturi, voluptatibus ratione laborum incidunt quod. Cum quis eos adipisci consequatur
+             ipsa. Sed!
+             Voluptatum voluptas sunt tenetur porro maiores veritatis, ipsam libero? Nesciunt ea quas iusto ducimus
+             suscipit eos quibusdam. Doloremque cum fugiat, tempora qui temporibus delectus. Fuga quaerat accusamus non
+             iusto delectus.
+             Esse a sit et nobis ducimus sint, porro, quod accusamus exercitationem voluptatum placeat sed. Soluta,
+             blanditiis aliquam consectetur rem aliquid itaque tempore ea corporis recusandae? Dignissimos sit expedita
+             commodi quibusdam.
+             Illo voluptates culpa assumenda recusandae explicabo ab pariatur? Temporibus qui dolorum expedita culpa
+             animi eligendi pariatur fuga dolorem ipsum, alias hic unde, nulla tenetur odio saepe enim aut ratione
+             laboriosam!</p>
+    </div>
+    <div id="page7" class="page">
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+         <!-- page content -->
+         <h1>Example page 7</h1>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae explicabo tempora ullam cumque, obcaecati
+             aut sed inventore excepturi, voluptatibus ratione laborum incidunt quod. Cum quis eos adipisci consequatur
+             ipsa. Sed!
+             Voluptatum voluptas sunt tenetur porro maiores veritatis, ipsam libero? Nesciunt ea quas iusto ducimus
+             suscipit eos quibusdam. Doloremque cum fugiat, tempora qui temporibus delectus. Fuga quaerat accusamus non
+             iusto delectus.
+             Esse a sit et nobis ducimus sint, porro, quod accusamus exercitationem voluptatum placeat sed. Soluta,
+             blanditiis aliquam consectetur rem aliquid itaque tempore ea corporis recusandae? Dignissimos sit expedita
+             commodi quibusdam.
+             Illo voluptates culpa assumenda recusandae explicabo ab pariatur? Temporibus qui dolorum expedita culpa
+             animi eligendi pariatur fuga dolorem ipsum, alias hic unde, nulla tenetur odio saepe enim aut ratione
+             laboriosam!</p>
+    </div>
+    <div id="page8" class="page">
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+         <!-- page content -->
+         <h1>Example page 8</h1>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae explicabo tempora ullam cumque, obcaecati
+             aut sed inventore excepturi, voluptatibus ratione laborum incidunt quod. Cum quis eos adipisci consequatur
+             ipsa. Sed!
+             Voluptatum voluptas sunt tenetur porro maiores veritatis, ipsam libero? Nesciunt ea quas iusto ducimus
+             suscipit eos quibusdam. Doloremque cum fugiat, tempora qui temporibus delectus. Fuga quaerat accusamus non
+             iusto delectus.
+             Esse a sit et nobis ducimus sint, porro, quod accusamus exercitationem voluptatum placeat sed. Soluta,
+             blanditiis aliquam consectetur rem aliquid itaque tempore ea corporis recusandae? Dignissimos sit expedita
+             commodi quibusdam.
+             Illo voluptates culpa assumenda recusandae explicabo ab pariatur? Temporibus qui dolorum expedita culpa
+             animi eligendi pariatur fuga dolorem ipsum, alias hic unde, nulla tenetur odio saepe enim aut ratione
+             laboriosam!</p>
+    </div>
+    <div id="page9" class="page">
+        <nav class="navbar">
+            <button class="nav1 navbar__btn navbar__btn--primary navbar__btn--active" type="button" onclick="showPage(1);">Start</button>
+            <button class="nav2 navbar__btn navbar__btn--primary" type="button" onclick="showPage(2);">Om BoyeAppen</button>
+            <button class="nav3 navbar__btn navbar__btn--primary" type="button" onclick="showPage(3);">Bilder på Karin Boye</button>
+            <button class="nav4 navbar__btn navbar__btn--primary" type="button" onclick="showPage(4);">Betygsätt Boye</button>
+            <button class="nav5 navbar__btn navbar__btn--primary" type="button" onclick="showPage(5);">Moln</button>
+            <button class="nav6 navbar__btn navbar__btn--primary" type="button" onclick="showPage(6);">Gömda land</button>
+            <button class="nav7 navbar__btn navbar__btn--primary" type="button" onclick="showPage(7);">Härdarna</button>
+            <button class="nav8 navbar__btn navbar__btn--primary" type="button" onclick="showPage(8);">För trädets skull</button>
+            <button class="nav9 navbar__btn navbar__btn--primary" type="button" onclick="showPage(9);">De sju dödssynderna och andra dikter</button>
+        </nav>
+         <!-- page content -->
+         <h1>Example page 9</h1>
+         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae explicabo tempora ullam cumque, obcaecati
+             aut sed inventore excepturi, voluptatibus ratione laborum incidunt quod. Cum quis eos adipisci consequatur
+             ipsa. Sed!
+             Voluptatum voluptas sunt tenetur porro maiores veritatis, ipsam libero? Nesciunt ea quas iusto ducimus
+             suscipit eos quibusdam. Doloremque cum fugiat, tempora qui temporibus delectus. Fuga quaerat accusamus non
+             iusto delectus.
+             Esse a sit et nobis ducimus sint, porro, quod accusamus exercitationem voluptatum placeat sed. Soluta,
+             blanditiis aliquam consectetur rem aliquid itaque tempore ea corporis recusandae? Dignissimos sit expedita
+             commodi quibusdam.
+             Illo voluptates culpa assumenda recusandae explicabo ab pariatur? Temporibus qui dolorum expedita culpa
+             animi eligendi pariatur fuga dolorem ipsum, alias hic unde, nulla tenetur odio saepe enim aut ratione
+             laboriosam!</p>
+    </div>
+</body>
+ 
+</html>
