@@ -32,3 +32,5 @@ under activity_main.xml. Id:et skapas med hjälp av 'android:id="@+id/my_webview
 
 
 ![](android.png)
+![](internal.png)
+![](external.png)
